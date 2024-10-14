@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Iniciar Sesión</h1>
+        <p>Por favor, ingresa tus credenciales para acceder a tu cuenta.</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" asp-controller="Home" asp-action="Login">
+                <div class="form-group">
+                    <label for="nombreUsuario">Nombre de usuario:</label>
+                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" name="contrasena" id="contrasena" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                <div asp-validation-summary="All" class="text-danger mt-2"></div>
+            </form>
+            <div class="text-center mt-3">
+                <p>¿Olvidaste tu contraseña? <a href="#">Recuperar contraseña</a></p>
+                <p>¿No tienes una cuenta? <a href="#">Registrarte aquí</a></p>
+            </div>
+        </div>
+    </div>
+</div>

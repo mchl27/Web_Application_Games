@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Application_web_Arquitecture.Models.Transaccione>
+
+@{
+    ViewData["Title"] = "Gestión de Transacciones";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Gestión de Transacciones</h1>
+        <p>Administra todas las transacciones realizadas en la tienda de videojuegos.</p>
+        <a asp-action="Create" class="btn btn-success mb-3">Crear Nueva Transacción</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.TipoTransaccion)</th>
+                    <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                    <th>@Html.DisplayNameFor(model => model.Fecha)</th>
+                    <th>@Html.DisplayNameFor(model => model.IdUsuarioNavigation)</th>
+                    <th>@Html.DisplayNameFor(model => model.IdVideojuegoNavigation)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.TipoTransaccion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Fecha)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdUsuarioNavigation.IdUsuario)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdVideojuegoNavigation.IdJuego)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdTransaccion" class="btn btn-warning btn-sm">Editar</a>
+                            <a asp-action="Details" asp-route-id="@item.IdTransaccion" class="btn btn-info btn-sm">Detalles</a>
+                            <a asp-action="Delete" asp-route-id="@item.IdTransaccion" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
